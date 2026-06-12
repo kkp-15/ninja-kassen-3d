@@ -15,7 +15,10 @@
 - クレジット表記「VOICEVOX:ずんだもん」は音声またはずんだもん解説ON時に表示される。消さない
 
 ## ファイル構成
-- hakodate-1869.html … 本体（HTML/CSS/JSすべて入り）
+- index.html … シリーズトップ（統一仕様: favicon/GA4/AdSense/JSON-LD/統一フッター）
+- hakodate-1869.html … 本体（HTML/CSS/JSすべて入り）。公開URLは拡張子なし `/hakodate-1869` に正規化される
+- ogp.jpg … OGP画像（1200×630。本編canvasからキャプチャして生成）
+- wrangler.jsonc / ads.txt / .assetsignore / .github/workflows/deploy.yml … KKP標準デプロイ一式
 - voice/phase1.wav 〜 phase6.wav … ずんだもん音声（**未生成**。下記仕様参照）
 - voice/phase1.txt 〜 phase6.txt … 読み上げ原稿（textZと同一。VOICEVOXに貼り付ける用）
 - voice/README.md … VOICEVOX書き出し手順
@@ -52,9 +55,11 @@
 2. voice/ 音声ファイルの生成と再生確認（モバイルは初回タップ後でないと再生されない仕様に注意）
    - 原稿は voice/phase1.txt〜phase6.txt に書き出し済み。手順は voice/README.md
    - 再生はAudio要素1つを使い回す方式（iOSの自動再生制限対策）に変更済み
-3. サブドメイン公開：例 `kassen-3d.kkpwebninja.com`
-   - KKP標準フロー（new-ninja-siteスキルあり）: リポジトリ作成 → .github/workflows/deploy.yml 設置 → Cloudflare Pagesプロジェクト作成 → DNSにCNAME追加 → カスタムドメイン設定
-   - JSON-LD等のauthor名は「web忍者の砦」固定（個人名を入れない）。apex掲載・sitemap更新は別タスクに分ける
+3. ~~サブドメイン公開~~ **完了（2026-06-12）**: https://kassen-3d.kkpwebninja.com/
+   - リポ: kkp-15/ninja-kassen-3d ／ CF Pages: ninja-kassen-3d ／ DNS CNAME・カスタムドメイン設定済み
+   - GitHub Secrets登録済み。以降は push で自動デプロイ（deploy.yml、動作確認済み）
+   - JSON-LDのauthorは「web忍者の砦」（Organization）で設置済み
+   - **apex掲載・sitemap更新は未実施（別タスク）**
 4. シリーズ2作目（関ヶ原 or 厳島）。`terrainH` と `phases[]` を差し替える設計をそのまま踏襲する
 
 ## 開発スタイル（KKP共通ルール）
