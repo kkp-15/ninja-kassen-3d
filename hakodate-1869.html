@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>箱館戦争 1868–1869｜3D俯瞰アニメ｜合戦3D</title>
+<meta name="description" content="戊辰戦争最後の戦い・箱館戦争を3D俯瞰アニメで追体験。鷲ノ木上陸、五稜郭占領、開陽丸の喪失、二股口の戦い、箱館総攻撃、五稜郭開城まで全6局面。ずんだもん解説モードつき。無料・登録不要。">
+<meta name="theme-color" content="#0d1623">
+<link rel="canonical" href="https://kassen-3d.kkpwebninja.com/hakodate-1869.html">
+<!-- WEBNINJA_UNIFIED_FAVICON -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<meta property="og:title" content="箱館戦争 1868–1869｜3D俯瞰アニメ">
+<meta property="og:description" content="鷲ノ木上陸から五稜郭開城まで、全6局面を3D俯瞰アニメで追体験。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kassen-3d.kkpwebninja.com/hakodate-1869.html">
+<meta property="og:site_name" content="合戦3D">
+<meta property="og:image" content="https://kassen-3d.kkpwebninja.com/ogp.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kassen-3d.kkpwebninja.com/ogp.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "箱館戦争 1868–1869｜3D俯瞰アニメ",
+  "url": "https://kassen-3d.kkpwebninja.com/hakodate-1869.html",
+  "description": "戊辰戦争最後の戦い・箱館戦争の全6局面をテレビ特番風の3D俯瞰アニメで見られる無料コンテンツ。",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"JPY"},
+  "author": {"@type":"Organization","name":"web忍者の砦"}
+}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2LM85GJN0L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2LM85GJN0L');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ece5d4;
+    --ink:#221d15;
+    --ink-soft:#5a5244;
+    --line:#b4a684;
+    --vermilion:#c8452c;
+    --hyo:#4d7fb3;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;overflow:hidden;background:#0d1623;}
+  body{font-family:"Noto Serif JP",serif;color:var(--ink);-webkit-font-smoothing:antialiased;}
+  #stage{position:fixed;inset:0;}
+  canvas{display:block;}
+
+  #hud{position:fixed;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between;}
+
+  header{
+    padding:calc(12px + env(safe-area-inset-top)) 16px 0;
+    display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  }
+  .title-block{
+    background:rgba(236,229,212,0.92);
+    border:1px solid var(--line);
+    padding:10px 14px 9px;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .title-block h1{font-size:20px;font-weight:700;letter-spacing:.14em;line-height:1;}
+  .title-block .en{
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;
+    font-size:11px;letter-spacing:.06em;color:var(--ink-soft);margin-top:5px;display:block;
+  }
+  .title-block .rule{display:block;height:2px;width:34px;background:var(--vermilion);margin-top:7px;}
+
+  .legend{
+    background:rgba(236,229,212,0.92);border:1px solid var(--line);
+    padding:7px 11px;font-size:11px;letter-spacing:.06em;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);white-space:nowrap;
+  }
+  .legend span{margin-right:10px;}
+  .legend span:last-child{margin-right:0;}
+  .legend i{display:inline-block;width:14px;height:5px;margin-right:5px;vertical-align:middle;border-radius:1px;}
+  .legend .b i{background:var(--hyo);}
+  .legend .r i{background:var(--vermilion);}
+
+  #panel-wrap{
+    pointer-events:auto;
+    padding:0 12px calc(12px + env(safe-area-inset-bottom));
+    display:flex;justify-content:center;
+  }
+  #panel{
+    width:100%;max-width:560px;
+    background:rgba(236,229,212,0.92);
+    border:1px solid var(--line);
+    box-shadow:0 6px 24px rgba(0,0,0,.35);
+    padding:14px 16px 10px;
+    position:relative;
+  }
+  #btn-fold{
+    position:absolute;top:8px;right:8px;
+    font-family:"Noto Serif JP",serif;font-size:10.5px;letter-spacing:.08em;
+    background:transparent;border:1px solid var(--line);color:var(--ink-soft);
+    padding:5px 10px;cursor:pointer;
+  }
+  #btn-fold:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px;}
+
+  /* 折りたたみ状態：日付とタイトルだけの細い帯にする */
+  #panel.min{padding:9px 76px 8px 14px;}
+  #panel.min #ph-text,
+  #panel.min #ph-note,
+  #panel.min #opts,
+  #panel.min #controls{display:none;}
+  #panel.min #ph-date{display:inline;font-size:10px;}
+  #panel.min #ph-title{display:inline;font-size:13px;margin:0 0 0 8px;vertical-align:baseline;}
+  #panel.min #progress{margin-top:7px;}
+
+  #opts{display:flex;align-items:center;gap:8px;margin-top:9px;flex-wrap:wrap;}
+  #opts button{
+    font-family:"Noto Serif JP",serif;font-size:10.5px;letter-spacing:.06em;
+    background:transparent;border:1px solid var(--line);color:var(--ink-soft);
+    padding:6px 10px;cursor:pointer;
+  }
+  #opts button[aria-pressed="true"]{
+    color:#fff;background:#6a8c5a;border-color:#6a8c5a;
+  }
+  #opts button:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px;}
+  #credit{
+    font-size:9px;color:var(--ink-soft);letter-spacing:.04em;margin-left:auto;
+  }
+  #ph-date{
+    font-family:"Cormorant Garamond","Noto Serif JP",serif;
+    font-size:12px;letter-spacing:.18em;color:var(--vermilion);font-weight:600;
+  }
+  #ph-title{font-size:18px;font-weight:700;letter-spacing:.1em;margin-top:3px;}
+  #ph-text{font-size:12.5px;line-height:1.85;color:var(--ink-soft);margin-top:7px;min-height:4.6em;}
+  #ph-note{font-size:9.5px;color:var(--ink-soft);opacity:.75;margin-top:7px;letter-spacing:.03em;}
+
+  #progress{height:2px;background:#d8cfb8;margin-top:8px;position:relative;overflow:hidden;}
+  #progress i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--vermilion);}
+
+  #controls{display:flex;align-items:center;gap:8px;margin-top:10px;}
+  #controls button{
+    font-family:"Noto Serif JP",serif;font-size:12px;letter-spacing:.1em;
+    background:transparent;border:1px solid var(--line);color:var(--ink);
+    padding:8px 14px;cursor:pointer;min-height:38px;
+  }
+  #controls button:active{background:#ddd2b8;}
+  #controls button:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px;}
+  #btn-play{min-width:84px;}
+  #dots{margin-left:auto;display:flex;gap:7px;}
+  #dots button{
+    width:11px;height:11px;min-height:0;padding:0;border-radius:50%;
+    border:1px solid var(--ink-soft);background:transparent;
+    position:relative;
+  }
+  /* 見た目は11pxのまま、タップ当たり判定だけ広げる */
+  #dots button::after{content:"";position:absolute;inset:-4px;border-radius:50%;}
+  #dots button[aria-current="true"]{background:var(--vermilion);border-color:var(--vermilion);}
+
+  @media (max-width:430px){
+    .title-block{padding:7px 11px 6px;}
+    .title-block h1{font-size:15px;}
+    .title-block .en{display:none;}
+    .title-block .rule{margin-top:5px;}
+    .legend{font-size:10px;padding:6px 9px;}
+    #ph-text{font-size:12px;}
+  }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+
+<div id="hud">
+  <header>
+    <div class="title-block">
+      <h1>箱館戦争</h1>
+      <span class="en">The Campaign of Hakodate, 1868–1869</span>
+      <span class="rule"></span>
+    </div>
+    <div class="legend">
+      <span class="b"><i></i>旧幕府軍</span><span class="r"><i></i>新政府軍</span>
+    </div>
+  </header>
+
+  <div id="panel-wrap">
+    <div id="panel">
+      <button id="btn-fold" aria-label="解説をたたんで地図を見る" aria-expanded="true">たたむ</button>
+      <div id="ph-date">—</div>
+      <h2 id="ph-title">—</h2>
+      <p id="ph-text"></p>
+      <p id="ph-note">※地形・布陣は様式化した再現。兵力は諸説ある概数、日付は旧暦。</p>
+      <div id="progress"><i></i></div>
+      <div id="controls">
+        <button id="btn-prev" aria-label="前の局面">前へ</button>
+        <button id="btn-play" aria-label="再生・一時停止">一時停止</button>
+        <button id="btn-next" aria-label="次の局面">次へ</button>
+        <div id="dots" role="tablist" aria-label="局面"></div>
+      </div>
+      <div id="opts">
+        <button id="btn-zunda" aria-pressed="false">ずんだもん解説：OFF</button>
+        <button id="btn-voice" aria-pressed="false">音声：OFF</button>
+        <span id="credit" hidden>VOICEVOX:ずんだもん</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   箱館戦争 3D俯瞰デモ v2
+   単一HTML / Three.js r128 / フレームワーク・ビルド不要
+   v2: 指揮官・兵力ラベル / 戦闘エフェクト / 箱館湾海戦
+   ============================================================ */
+
+var REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- renderer / scene ---------- */
+var stage = document.getElementById("stage");
+var renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+stage.appendChild(renderer.domElement);
+
+var scene = new THREE.Scene();
+scene.background = new THREE.Color("#93a3b4");
+scene.fog = new THREE.FogExp2("#93a3b4", 0.0028);
+
+var camera = new THREE.PerspectiveCamera(55, window.innerWidth/window.innerHeight, 1, 2200);
+camera.position.set(30,170,260);
+var camPos = camera.position.clone();
+var camLook = new THREE.Vector3(30,0,0);
+
+var hemi = new THREE.HemisphereLight(0xcfd8e3, 0x44423c, 0.95);
+scene.add(hemi);
+var sun = new THREE.DirectionalLight(0xfff2dd, 0.8);
+sun.position.set(-90,160,60);
+scene.add(sun);
+
+/* ---------- 地形（渡島半島・様式化） ---------- */
+function blob(x,z,cx,cz,rx,rz,h){
+  var dx=(x-cx)/rx, dz=(z-cz)/rz;
+  return h*Math.exp(-(dx*dx+dz*dz)*1.8);
+}
+function ridgeFn(x,z,ax,az,bx,bz,h,w){
+  var vx=bx-ax, vz=bz-az;
+  var L2=vx*vx+vz*vz;
+  var t=((x-ax)*vx+(z-az)*vz)/L2;
+  t=Math.max(0,Math.min(1,t));
+  var px=ax+vx*t, pz=az+vz*t;
+  var d2=(x-px)*(x-px)+(z-pz)*(z-pz);
+  return h*Math.exp(-d2/(w*w));
+}
+function hash(x,z){
+  var s=Math.sin(x*12.9898+z*78.233)*43758.5453;
+  return s-Math.floor(s);
+}
+function terrainH(x,z){
+  var h=-14;
+  h+=blob(x,z,   0,  30, 170, 150, 26);  // 半島本体
+  h+=blob(x,z,  45, -70,  95,  70, 20);  // 函館平野側
+  h+=blob(x,z,-105, -95,  80,  60, 22);  // 松前方面
+  h+=blob(x,z,-120, -20,  60,  80, 16);  // 江差・乙部沿岸
+  h+=blob(x,z, -10,  50,  60,  55, 30);  // 内陸山地
+  h+=blob(x,z,  55, -25,  35,  30, 22);  // 横津岳方面
+  h+=blob(x,z, -60, -60,  30,  35, 14);  // 二股口の山塊
+  h-=blob(x,z,  42,-108,  26,  20, 26);  // 函館湾
+  h+=blob(x,z,  70,-128,  13,  11, 34);  // 函館山
+  h+=ridgeFn(x,z, 70,-128, 66,-98, 5, 6);// 砂州
+  h+=(hash(Math.floor(x*0.7),Math.floor(z*0.7))-0.5)*1.4;
+  return h;
+}
+
+var SEG=140, SIZE=440;
+var terrGeo = new THREE.PlaneGeometry(SIZE,SIZE,SEG,SEG);
+terrGeo.rotateX(-Math.PI/2);
+(function(){
+  var pos=terrGeo.attributes.position;
+  var colors=[];
+  var cSand=new THREE.Color("#b3a585"), cLow=new THREE.Color("#75836a"),
+      cFor=new THREE.Color("#5a6a57"), cRock=new THREE.Color("#7c8279"),
+      cSnow=new THREE.Color("#e8ecec"), tmp=new THREE.Color();
+  function bandColor(h,x,z){
+    var c;
+    if(h<1.2)      c=tmp.copy(cSand).lerp(cLow,Math.max(0,(h+2)/3.2));
+    else if(h<8)   c=tmp.copy(cLow).lerp(cFor,(h-1.2)/6.8);
+    else if(h<18)  c=tmp.copy(cFor).lerp(cRock,(h-8)/10);
+    else if(h<25)  c=tmp.copy(cRock).lerp(cSnow,(h-18)/7);
+    else           c=tmp.copy(cSnow);
+    var n=(hash(x*1.3,z*1.3)-0.5)*0.05;
+    return [c.r+n,c.g+n,c.b+n];
+  }
+  for(var i=0;i<pos.count;i++){
+    var x=pos.getX(i), z=pos.getZ(i);
+    var h=terrainH(x,z);
+    pos.setY(i,h);
+    var rgb=bandColor(h,x,z);
+    colors.push(rgb[0],rgb[1],rgb[2]);
+  }
+  terrGeo.setAttribute("color", new THREE.Float32BufferAttribute(colors,3));
+  terrGeo.computeVertexNormals();
+})();
+var terrain = new THREE.Mesh(terrGeo, new THREE.MeshLambertMaterial({vertexColors:true}));
+scene.add(terrain);
+
+var water = new THREE.Mesh(
+  new THREE.PlaneGeometry(1400,1400),
+  new THREE.MeshLambertMaterial({color:"#16283f",transparent:true,opacity:0.93})
+);
+water.rotation.x=-Math.PI/2;
+water.position.y=0;
+scene.add(water);
+
+function groundY(x,z){ return Math.max(terrainH(x,z),0); }
+function P(x,z,extra){ return new THREE.Vector3(x, groundY(x,z)+2.2+(extra||0), z); }
+
+/* ---------- 五稜郭（星形要塞） ---------- */
+var FORT=[75,-70];
+var fortGroup=new THREE.Group();
+(function(){
+  var baseY=groundY(FORT[0],FORT[1]);
+  function starShape(R,r){
+    var s=new THREE.Shape();
+    for(var i=0;i<10;i++){
+      var rad=(i%2===0)?R:r;
+      var a=-Math.PI/2 + i*Math.PI/5;
+      var px=Math.cos(a)*rad, py=Math.sin(a)*rad;
+      if(i===0) s.moveTo(px,py); else s.lineTo(px,py);
+    }
+    s.closePath();
+    return s;
+  }
+  var moat=new THREE.Mesh(
+    new THREE.ShapeGeometry(starShape(14.5,8.2)),
+    new THREE.MeshLambertMaterial({color:"#1d3147"})
+  );
+  moat.rotation.x=-Math.PI/2;
+  moat.position.y=baseY+0.15;
+  fortGroup.add(moat);
+  var wall=new THREE.Mesh(
+    new THREE.ExtrudeGeometry(starShape(11,6.2),{depth:2.4,bevelEnabled:false}),
+    new THREE.MeshLambertMaterial({color:"#5e6e55"})
+  );
+  wall.rotation.x=-Math.PI/2;
+  wall.position.y=baseY+0.2;
+  fortGroup.add(wall);
+  var hall=new THREE.Mesh(
+    new THREE.BoxGeometry(4.6,1.6,3.2),
+    new THREE.MeshLambertMaterial({color:"#8a7a5e"})
+  );
+  hall.position.set(0,baseY+3.4,0);
+  fortGroup.add(hall);
+  fortGroup.position.set(FORT[0],0,FORT[1]);
+  scene.add(fortGroup);
+})();
+
+/* 弁天台場 */
+(function(){
+  var g=new THREE.Group();
+  var fortb=new THREE.Mesh(
+    new THREE.CylinderGeometry(4.5,5.2,2.2,6),
+    new THREE.MeshLambertMaterial({color:"#6b6f62"})
+  );
+  fortb.position.y=1.0;
+  g.add(fortb);
+  g.position.set(60,0.2,-107);
+  scene.add(g);
+})();
+
+/* ---------- 旗 ---------- */
+function makeFlag(color,h){
+  h=h||9;
+  var g=new THREE.Group();
+  var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.22,h,6),
+    new THREE.MeshLambertMaterial({color:"#3a352c"}));
+  pole.position.y=h/2;
+  g.add(pole);
+  var cloth=new THREE.Mesh(new THREE.PlaneGeometry(5,3),
+    new THREE.MeshLambertMaterial({color:color,side:THREE.DoubleSide}));
+  cloth.position.set(2.6,h-1.8,0);
+  g.add(cloth);
+  g.userData.cloth=cloth;
+  return g;
+}
+var fortBaseY=groundY(FORT[0],FORT[1])+2.6;
+var fortFlagBlue=makeFlag("#4d7fb3",11);
+fortFlagBlue.position.set(FORT[0],fortBaseY,FORT[1]);
+fortFlagBlue.visible=false;
+scene.add(fortFlagBlue);
+var fortFlagWhite=makeFlag("#efece2",11);
+fortFlagWhite.position.set(FORT[0],fortBaseY,FORT[1]);
+fortFlagWhite.visible=false;
+scene.add(fortFlagWhite);
+
+/* ---------- 地名ラベル ---------- */
+var LABELS=[
+  ["五稜郭",   75, -70, 18, 1.05],
+  ["函館山",   70,-128, 14, 0.95],
+  ["弁天台場", 60,-107,  9, 0.8],
+  ["一本木関門",64, -96,  8, 0.8],
+  ["鷲ノ木",   15, 112,  9, 0.9],
+  ["江差",   -138, -40,  9, 0.9],
+  ["乙部",   -145,  -8,  9, 0.9],
+  ["松前",   -110,-122,  9, 0.9],
+  ["二股口",  -60, -52, 12, 0.85],
+  ["木古内",  -45,-105,  8, 0.85]
+];
+/* カメラ近接時にラベルが画面を覆わないよう、近距離(LABEL_NEAR未満)では見かけサイズを一定に抑える */
+var LABEL_NEAR=140;
+var placeLabels=[], unitLabels=[];
+var lblPos=new THREE.Vector3();
+function fitLabels(){
+  for(var a=0;a<2;a++){
+    var arr=a===0?placeLabels:unitLabels;
+    for(var i=0;i<arr.length;i++){
+      var sp=arr[i];
+      sp.getWorldPosition(lblPos);
+      var f=Math.min(1,lblPos.distanceTo(camera.position)/LABEL_NEAR);
+      sp.scale.set(sp.userData.bsX*f,sp.userData.bsY*f,1);
+    }
+  }
+}
+function makeLabel(text,scaleMul){
+  var pad=14, fs=46;
+  var c=document.createElement("canvas");
+  var ctx=c.getContext("2d");
+  ctx.font='500 '+fs+'px "Noto Serif JP", serif';
+  var w=Math.ceil(ctx.measureText(text).width)+pad*2;
+  c.width=w; c.height=fs+pad*2;
+  ctx=c.getContext("2d");
+  ctx.font='500 '+fs+'px "Noto Serif JP", serif';
+  ctx.textBaseline="middle";
+  ctx.lineWidth=8; ctx.strokeStyle="rgba(13,22,35,0.85)";
+  ctx.strokeText(text,pad,c.height/2);
+  ctx.fillStyle="#f3efe4";
+  ctx.fillText(text,pad,c.height/2);
+  var tex=new THREE.CanvasTexture(c);
+  tex.minFilter=THREE.LinearFilter;
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthTest:false}));
+  var s=(scaleMul||1)*13;
+  sp.scale.set(s*(c.width/c.height), s, 1);
+  sp.userData.bsX=s*(c.width/c.height);
+  sp.userData.bsY=s;
+  return sp;
+}
+function buildLabels(){
+  LABELS.forEach(function(L){
+    var sp=makeLabel(L[0],L[4]);
+    sp.position.set(L[1], groundY(L[1],L[2])+L[3], L[2]);
+    sp.renderOrder=10;
+    placeLabels.push(sp);
+    scene.add(sp);
+  });
+}
+if(document.fonts && document.fonts.ready){
+  var done=false;
+  document.fonts.ready.then(function(){ if(!done){done=true;buildLabels();} });
+  setTimeout(function(){ if(!done){done=true;buildLabels();} },2500);
+}else buildLabels();
+
+/* ---------- 部隊ラベル（指揮官・兵力） ---------- */
+function makeUnitLabel(name,count,color){
+  var fs1=40, fs2=27, pad=13;
+  var c=document.createElement("canvas");
+  var ctx=c.getContext("2d");
+  ctx.font='700 '+fs1+'px "Noto Serif JP",serif';
+  var w1=ctx.measureText(name).width;
+  ctx.font='500 '+fs2+'px "Noto Serif JP",serif';
+  var w2=count?ctx.measureText(count).width:0;
+  var w=Math.ceil(Math.max(w1,w2))+pad*2+8;
+  var h=count?(fs1+fs2+pad*2+8):(fs1+pad*2);
+  c.width=w; c.height=h;
+  ctx=c.getContext("2d");
+  ctx.fillStyle="rgba(13,22,35,0.58)";
+  ctx.fillRect(0,0,w,h);
+  ctx.fillStyle=color;
+  ctx.fillRect(0,0,7,h);
+  ctx.font='700 '+fs1+'px "Noto Serif JP",serif';
+  ctx.textBaseline="top";
+  ctx.fillStyle="#f3efe4";
+  ctx.fillText(name,pad+6,pad-3);
+  if(count){
+    ctx.font='500 '+fs2+'px "Noto Serif JP",serif';
+    ctx.fillStyle="#d8cfb8";
+    ctx.fillText(count,pad+6,pad+fs1+3);
+  }
+  var tex=new THREE.CanvasTexture(c);
+  tex.minFilter=THREE.LinearFilter;
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthTest:false}));
+  var sy=h/8.4;
+  sp.scale.set(sy*(w/h), sy, 1);
+  sp.userData.bsX=sy*(w/h);
+  sp.userData.bsY=sy;
+  sp.renderOrder=11;
+  unitLabels.push(sp);
+  return sp;
+}
+
+/* ---------- 戦闘エフェクト ---------- */
+var smokeTex=(function(){
+  var c=document.createElement("canvas");
+  c.width=64;c.height=64;
+  var ctx=c.getContext("2d");
+  var gr=ctx.createRadialGradient(32,32,2,32,32,30);
+  gr.addColorStop(0,"rgba(255,255,255,0.9)");
+  gr.addColorStop(1,"rgba(255,255,255,0)");
+  ctx.fillStyle=gr;
+  ctx.fillRect(0,0,64,64);
+  var t=new THREE.CanvasTexture(c);
+  t.minFilter=THREE.LinearFilter;
+  return t;
+})();
+
+function makeCombat(x,z,scale){
+  scale=scale||1;
+  var g=new THREE.Group();
+  g.position.set(x,groundY(x,z),z);
+  var ring=new THREE.Mesh(new THREE.RingGeometry(2.6*scale,3.3*scale,24),
+    new THREE.MeshBasicMaterial({color:0xf2b25c,transparent:true,opacity:0.3,side:THREE.DoubleSide}));
+  ring.rotation.x=-Math.PI/2;
+  ring.position.y=0.35;
+  g.add(ring);
+  var flashes=[];
+  for(var i=0;i<4;i++){
+    var f=new THREE.Sprite(new THREE.SpriteMaterial({map:smokeTex,color:0xffd070,transparent:true,opacity:0.95,blending:THREE.AdditiveBlending,depthWrite:false}));
+    f.scale.setScalar(2.6*scale);
+    f.position.set((hash(i,x)-0.5)*5*scale,1.3,(hash(x,i)-0.5)*5*scale);
+    g.add(f);
+    flashes.push({sp:f,off:hash(i*3,z)*9});
+  }
+  var puffs=[];
+  for(var j=0;j<6;j++){
+    var p=new THREE.Sprite(new THREE.SpriteMaterial({map:smokeTex,color:0x9a9a9a,transparent:true,opacity:0,depthWrite:false}));
+    p.position.set((hash(j,z)-0.5)*5*scale,1,(hash(z,j)-0.5)*5*scale);
+    g.add(p);
+    puffs.push({sp:p,off:hash(j*7,x)});
+  }
+  g.visible=false;
+  return {obj:g, update:function(time,on){
+    g.visible=on;
+    if(!on)return;
+    ring.material.opacity=0.22+0.14*Math.sin(time*5.5);
+    flashes.forEach(function(f){ f.sp.visible=Math.sin(time*14+f.off*7)>0.45; });
+    puffs.forEach(function(p){
+      var u=(time*0.3+p.off)%1;
+      p.sp.position.y=1+u*8*scale;
+      p.sp.material.opacity=0.42*(1-u);
+      p.sp.scale.setScalar((2+u*5.5)*scale);
+    });
+  }};
+}
+
+function makeFirefight(a,b,n){
+  n=n||6;
+  var g=new THREE.Group();
+  var trs=[];
+  for(var i=0;i<n;i++){
+    var m=new THREE.Mesh(new THREE.BoxGeometry(0.26,0.26,2.4),
+      new THREE.MeshBasicMaterial({color:0xffe9b0,transparent:true,opacity:0.95}));
+    m.visible=false;
+    g.add(m);
+    trs.push({m:m,off:hash(i,7)*1,rev:i%2===1,sp:1.5+hash(i,3)*0.9});
+  }
+  g.visible=false;
+  var tmpA=new THREE.Vector3(), tmpB=new THREE.Vector3();
+  return {obj:g, update:function(time,on){
+    g.visible=on;
+    if(!on)return;
+    trs.forEach(function(tr){
+      var u=(time*tr.sp+tr.off)%1;
+      if(tr.rev){tmpA.copy(b);tmpB.copy(a);}else{tmpA.copy(a);tmpB.copy(b);}
+      tr.m.position.lerpVectors(tmpA,tmpB,u);
+      tr.m.position.y+=0.6+Math.sin(u*Math.PI)*1.4;
+      tr.m.lookAt(tmpB);
+      tr.m.visible=(u>0.05&&u<0.95);
+    });
+  }};
+}
+
+function makeExplosion(pos){
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:smokeTex,color:0xffb24a,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));
+  sp.position.copy(pos);
+  var smoke=new THREE.Sprite(new THREE.SpriteMaterial({map:smokeTex,color:0x555555,transparent:true,opacity:0,depthWrite:false}));
+  smoke.position.copy(pos);
+  var g=new THREE.Group();
+  g.add(sp); g.add(smoke);
+  return {obj:g, update:function(u){
+    if(u<=0||u>=1){sp.material.opacity=0;smoke.material.opacity=0;return;}
+    sp.material.opacity=Math.max(0,1-u*1.6);
+    sp.scale.setScalar(3+u*26);
+    smoke.material.opacity=0.5*(1-u);
+    smoke.position.y=pos.y+u*14;
+    smoke.scale.setScalar(4+u*18);
+  }};
+}
+
+/* ---------- 部品ヘルパー ---------- */
+var boxGeo=new THREE.BoxGeometry(1.7,1.7,1.7);
+
+function makeArrow(pts,color,r){
+  r=r||1.0;
+  var curve=new THREE.CatmullRomCurve3(pts);
+  var tube=new THREE.TubeGeometry(curve,72,r,6,false);
+  var mat=new THREE.MeshBasicMaterial({color:color,transparent:true,opacity:0.92});
+  var mesh=new THREE.Mesh(tube,mat);
+  var total=tube.index.count;
+  mesh.geometry.setDrawRange(0,0);
+  var head=new THREE.Mesh(new THREE.ConeGeometry(r*2.6,r*6,8),mat);
+  head.visible=false;
+  var g=new THREE.Group();
+  g.add(mesh); g.add(head);
+  var up=new THREE.Vector3(0,1,0);
+  return {obj:g, curve:curve, update:function(tt){
+    tt=Math.max(0,Math.min(1,tt));
+    mesh.geometry.setDrawRange(0,Math.floor(total*tt/3)*3);
+    var q=Math.max(tt,0.002);
+    head.position.copy(curve.getPointAt(q));
+    head.quaternion.setFromUnitVectors(up,curve.getTangentAt(q));
+    head.visible=tt>0.02;
+  }};
+}
+
+function makeTroop(color,n,label,count){
+  n=n||4;
+  var g=new THREE.Group();
+  var m=new THREE.MeshLambertMaterial({color:color});
+  for(var i=0;i<n;i++){
+    var b=new THREE.Mesh(boxGeo,m);
+    b.position.set((i%2)*2.4-1.2, 0.9, Math.floor(i/2)*2.4-1.2);
+    g.add(b);
+  }
+  var f=makeFlag(color,6);
+  f.userData.cloth.scale.set(0.6,0.6,1);
+  g.add(f);
+  g.userData.mat=m;
+  g.userData.flag=f;
+  if(label){
+    var sp=makeUnitLabel(label,count,color==="#4d7fb3"?"#6fa3d4":"#e06a4e");
+    sp.position.set(0,11,0);
+    g.add(sp);
+    g.userData.label=sp;
+  }
+  return g;
+}
+function placeOn(group,curve,tt){
+  tt=Math.max(0,Math.min(1,tt));
+  var p=curve.getPointAt(tt);
+  group.position.set(p.x,Math.max(groundY(p.x,p.z),0),p.z);
+}
+
+function makeShip(flagColor,hullColor,label,count){
+  var g=new THREE.Group();
+  var hull=new THREE.Mesh(new THREE.BoxGeometry(8,1.8,2.6),
+    new THREE.MeshLambertMaterial({color:hullColor||"#23262c"}));
+  hull.position.y=0.9;
+  g.add(hull);
+  var cab=new THREE.Mesh(new THREE.BoxGeometry(3,1,1.9),
+    new THREE.MeshLambertMaterial({color:"#3c4048"}));
+  cab.position.set(0,2.1,0);
+  g.add(cab);
+  for(var i=0;i<2;i++){
+    var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.13,0.13,6,5),
+      new THREE.MeshLambertMaterial({color:"#4a443a"}));
+    mast.position.set(i===0?-2.2:2.2,4.5,0);
+    g.add(mast);
+  }
+  var fl=new THREE.Mesh(new THREE.PlaneGeometry(1.8,1.1),
+    new THREE.MeshLambertMaterial({color:flagColor,side:THREE.DoubleSide}));
+  fl.position.set(2.2,7.2,0);
+  g.add(fl);
+  if(label){
+    var sp=makeUnitLabel(label,count,flagColor==="#4d7fb3"?"#6fa3d4":"#e06a4e");
+    sp.position.set(0,11.5,0);
+    g.add(sp);
+  }
+  return g;
+}
+
+/* ---------- 局面定義 ---------- */
+var DUR=15;
+var dyn=new THREE.Group();
+scene.add(dyn);
+var updaters=[];
+
+function clearDyn(){
+  updaters=[];
+  unitLabels.length=0;
+  while(dyn.children.length){
+    var o=dyn.children.pop();
+    o.traverse(function(c){
+      if(c.geometry && c.geometry!==boxGeo) c.geometry.dispose();
+      if(c.material && c.material.map && c.material.map!==smokeTex) c.material.map.dispose();
+      if(c.material) c.material.dispose();
+    });
+  }
+}
+function ease(t){ return t<0.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
+function seg(t,a,b){ return Math.max(0,Math.min(1,(t-a)/(b-a))); }
+
+var HYO="#4d7fb3", VER="#c8452c";
+
+var phases=[
+{
+  date:"明治元年（1868）10月20日",
+  title:"鷲ノ木上陸",
+  text:"榎本武揚率いる旧幕府艦隊・約三千が蝦夷地、鷲ノ木に上陸。大鳥圭介隊は内陸の大野口から、土方歳三隊は川汲峠を越えて、二手に分かれ箱館を目指す。途中、峠下で新政府側の箱館府兵と最初の交戦が起こる。",
+  textZ:"榎本武揚ひきいる旧幕府艦隊・約三千が、蝦夷地の鷲ノ木に上陸したのだ。大鳥圭介隊は内陸の大野口から、土方歳三隊は川汲峠から、二手に分かれて箱館を目指すのだ。途中の峠下で、最初の戦いが起こったのだ。",
+  mood:{bg:"#93a3b4",fog:0.0028},
+  camA:{pos:[35,190,265],look:[20,0,30]},
+  camB:{pos:[60,120,120],look:[60,0,-40]},
+  build:function(){
+    fortFlagBlue.visible=false; fortFlagWhite.visible=false;
+    for(var i=0;i<3;i++){
+      var s=makeShip(HYO,null,i===0?"榎本武揚 艦隊":null,i===0?"開陽丸ほか八隻・約3,000":null);
+      s.position.set(8+i*13,0,128+i*7);
+      s.rotation.y=Math.PI*0.95;
+      dyn.add(s);
+    }
+    var a1=makeArrow([P(15,108),P(0,60),P(12,-8),P(45,-48),P(68,-64)],HYO);
+    var a2=makeArrow([P(22,108),P(68,58),P(95,4),P(97,-58),P(82,-80)],HYO);
+    dyn.add(a1.obj); dyn.add(a2.obj);
+    var t1=makeTroop(HYO,4,"大鳥圭介隊","本道・約600");
+    var t2=makeTroop(HYO,4,"土方歳三隊","川汲峠・約500");
+    dyn.add(t1); dyn.add(t2);
+    var cb=makeCombat(25,-28,1);
+    dyn.add(cb.obj);
+    updaters.push(function(t,time){
+      var tt=seg(t,0.12,0.95);
+      a1.update(tt); a2.update(tt);
+      placeOn(t1,a1.curve,tt); placeOn(t2,a2.curve,tt);
+      cb.update(time, t>0.5&&t<0.82);
+    });
+  }
+},
+{
+  date:"明治元年（1868）10月26日 — 12月",
+  title:"五稜郭占領と蝦夷地平定",
+  text:"旧幕府軍はほぼ無血で五稜郭を占領。土方歳三は約七百を率いて松前城を攻略し、江差も松岡四郎次郎隊が制圧。十二月、榎本を総裁とする政権——いわゆる「蝦夷共和国」が成立する。",
+  textZ:"旧幕府軍はほとんど戦わずに五稜郭を手に入れたのだ。土方歳三は約七百をひきいて松前城を落として、江差も松岡四郎次郎隊が制圧。十二月には榎本を総裁とする「蝦夷共和国」ができたのだ。すごい勢いなのだ。",
+  mood:{bg:"#aab4bd",fog:0.0024},
+  camA:{pos:[98,42,-28],look:[75,4,-70]},
+  camB:{pos:[-30,175,75],look:[-40,0,-65]},
+  build:function(){
+    fortFlagBlue.visible=true; fortFlagWhite.visible=false;
+    var a1=makeArrow([P(60,-72),P(-20,-82),P(-70,-100),P(-104,-118)],HYO);
+    var a2=makeArrow([P(58,-58),P(-30,-44),P(-90,-38),P(-132,-40)],HYO);
+    dyn.add(a1.obj); dyn.add(a2.obj);
+    var t1=makeTroop(HYO,4,"土方歳三隊","松前攻略・約700");
+    var t2=makeTroop(HYO,4,"松岡四郎次郎隊","江差方面");
+    dyn.add(t1); dyn.add(t2);
+    var cb=makeCombat(-104,-117,1.1);
+    dyn.add(cb.obj);
+    var f1=makeFlag(HYO), f2=makeFlag(HYO);
+    f1.position.set(-110,groundY(-110,-122),-122);
+    f2.position.set(-138,groundY(-138,-40),-40);
+    f1.visible=false; f2.visible=false;
+    dyn.add(f1); dyn.add(f2);
+    updaters.push(function(t,time){
+      fortFlagBlue.scale.y=0.2+0.8*seg(t,0.02,0.2);
+      var tt=seg(t,0.28,0.82);
+      a1.update(tt); a2.update(tt);
+      placeOn(t1,a1.curve,tt); placeOn(t2,a2.curve,tt);
+      cb.update(time, t>0.74&&t<0.95);
+      f1.visible=t>0.95; f2.visible=t>0.92;
+    });
+  }
+},
+{
+  date:"明治元年（1868）11月15日",
+  title:"開陽丸の喪失",
+  text:"江差沖。旗艦・開陽丸が暴風雪のなか座礁し、のちに沈没する。東洋一と謳われた軍艦を失った旧幕府軍は制海権を保つ力を失い、戦局の大きな転換点となった。",
+  textZ:"江差沖で大事件なのだ。旗艦・開陽丸が暴風雪で座礁して、沈んでしまったのだ……。東洋一の軍艦を失った旧幕府軍は、海の支配権を保てなくなったのだ。ここが運命の分かれ目なのだ。",
+  mood:{bg:"#4d5662",fog:0.0058},
+  camA:{pos:[-205,42,-105],look:[-162,2,-45]},
+  camB:{pos:[-190,16,-66],look:[-162,0,-45]},
+  build:function(){
+    fortFlagBlue.visible=true; fortFlagWhite.visible=false;
+    var ship=makeShip(HYO,"#1d2026");
+    ship.position.set(-162,0,-45);
+    ship.rotation.y=0.6;
+    dyn.add(ship);
+    var lb=makeUnitLabel("開陽丸","旧幕府軍旗艦・2,590トン","#6fa3d4");
+    lb.position.set(-162,12,-45);
+    dyn.add(lb);
+    updaters.push(function(t){
+      var tt=seg(t,0.25,0.95);
+      ship.rotation.z=-tt*0.55;
+      ship.position.y=-tt*4.2;
+      lb.material.opacity=1-seg(t,0.8,1)*0.6;
+    });
+  }
+},
+{
+  date:"明治2年（1869）4月9日",
+  title:"新政府軍、乙部に上陸",
+  text:"甲鉄を旗艦とする新政府軍の第一陣・約千五百が乙部に上陸。松前口・木古内口・二股口の三方から箱館へ進む。土方歳三は二股口で約三百を率いて夜を徹した銃撃戦を制するが、他戦線の崩壊により撤退を余儀なくされた。",
+  textZ:"明治二年の春、甲鉄をひきいる新政府軍・約千五百が乙部に上陸したのだ。三つのルートから箱館へ進撃なのだ。土方歳三は二股口で、たった約三百で夜どおしの銃撃戦に勝ったのに、ほかの戦線が崩れて撤退するしかなかったのだ。くやしいのだ。",
+  mood:{bg:"#9fadb6",fog:0.0026},
+  camA:{pos:[-215,130,70],look:[-130,0,-25]},
+  camB:{pos:[-105,80,55],look:[-55,0,-55]},
+  build:function(){
+    fortFlagBlue.visible=true; fortFlagWhite.visible=false;
+    for(var i=0;i<4;i++){
+      var s=makeShip(VER,null,i===0?"新政府艦隊":null,i===0?"甲鉄・春日ほか":null);
+      s.position.set(-185+i*9,0,18-i*9);
+      s.rotation.y=-0.5;
+      dyn.add(s);
+    }
+    var land=makeArrow([new THREE.Vector3(-168,2.2,-2),P(-145,-8)],VER,0.9);
+    var a1=makeArrow([P(-142,-14),P(-138,-42),P(-122,-88),P(-106,-116)],VER);
+    var a2=makeArrow([P(-100,-112),P(-60,-108),P(-20,-100),P(14,-92)],VER);
+    var a3=makeArrow([P(-138,-12),P(-96,-30),P(-66,-46),P(-18,-70),P(40,-74)],VER);
+    dyn.add(land.obj); dyn.add(a1.obj); dyn.add(a2.obj); dyn.add(a3.obj);
+    var lander=makeTroop(VER,4,"山田顕義 ら","第一陣・約1,500");
+    lander.position.set(-145,groundY(-145,-8),-8);
+    dyn.add(lander);
+    var atk=makeTroop(VER,4,"新政府軍","二股口・約600");
+    dyn.add(atk);
+    var def=makeTroop(HYO,4,"土方歳三隊","約300");
+    def.position.set(-56,groundY(-56,-54),-54);
+    dyn.add(def);
+    var ff=makeFirefight(P(-68,-46,1),P(-58,-52,1),7);
+    dyn.add(ff.obj);
+    var cb1=makeCombat(-63,-49,1.25);
+    var cb2=makeCombat(-22,-100,0.9);
+    var cb3=makeCombat(-106,-117,0.9);
+    dyn.add(cb1.obj); dyn.add(cb2.obj); dyn.add(cb3.obj);
+    updaters.push(function(t,time){
+      land.update(seg(t,0.04,0.2));
+      a1.update(seg(t,0.26,0.8));
+      a2.update(seg(t,0.42,0.92));
+      a3.update(seg(t,0.3,0.62));
+      placeOn(atk,a3.curve,seg(t,0.3,0.62)*0.62);
+      var fight=t>0.52&&t<0.93;
+      ff.update(time,fight);
+      cb1.update(time,fight);
+      cb2.update(time,t>0.72&&t<0.96);
+      cb3.update(time,t>0.55&&t<0.8);
+      if(t>0.93) def.visible=Math.sin(time*18)>-0.4;
+      else def.visible=true;
+    });
+  }
+},
+{
+  date:"明治2年（1869）5月11日",
+  title:"箱館総攻撃",
+  text:"新政府軍は海陸から箱館を総攻撃。湾内の海戦では旧幕府の蟠竜が朝陽を轟沈させるが、函館山の背後を衝く奇襲で市街は陥落。一本木関門のあたりで、馬上の土方歳三が銃弾に倒れた。",
+  textZ:"ついに箱館総攻撃なのだ。湾内では蟠竜が朝陽を轟沈させる大金星なのだ！でも函館山の裏からの奇襲で、市街は陥落……。一本木関門のあたりで、馬上の土方歳三が銃弾に倒れたのだ。",
+  mood:{bg:"#b29688",fog:0.0034},
+  camA:{pos:[5,80,-195],look:[55,0,-105]},
+  camB:{pos:[85,40,-148],look:[64,4,-96]},
+  build:function(){
+    fortFlagBlue.visible=true; fortFlagWhite.visible=false;
+    var ships=[];
+    var names=[["甲鉄","新政府艦隊旗艦"],["春日",null],["朝陽",null]];
+    for(var i=0;i<3;i++){
+      var s=makeShip(VER,null,names[i][0],names[i][1]);
+      s.position.set(26+i*12,0,-126+i*5);
+      s.rotation.y=0.4;
+      dyn.add(s); ships.push(s);
+    }
+    var asahi=ships[2];
+    var banryu=makeShip(HYO,"#1d2026","蟠竜",null);
+    banryu.position.set(57,0,-112);
+    banryu.rotation.y=-0.9;
+    dyn.add(banryu);
+    var a1=makeArrow([new THREE.Vector3(36,2.2,-148),new THREE.Vector3(58,2.6,-142),P(74,-120,2),P(66,-100)],VER);
+    var a2=makeArrow([P(20,-92),P(45,-92),P(60,-95)],VER,0.9);
+    dyn.add(a1.obj); dyn.add(a2.obj);
+    var raid=makeTroop(VER,3,"奇襲部隊","函館山背後へ");
+    dyn.add(raid);
+    var shells=[];
+    var targets=[[60,-107],[64,-96],[70,-100]];
+    for(var k=0;k<6;k++){
+      var sp=new THREE.Mesh(new THREE.SphereGeometry(0.75,6,6),
+        new THREE.MeshBasicMaterial({color:"#f2d27a"}));
+      dyn.add(sp);
+      var from=ships[k%2].position.clone().setY(2.5);
+      var tg=targets[k%3];
+      shells.push({m:sp,from:from,to:new THREE.Vector3(tg[0],groundY(tg[0],tg[1])+1,tg[1]),off:k*0.17});
+    }
+    var navalFF=makeFirefight(banryu.position.clone().setY(3),asahi.position.clone().setY(3),5);
+    dyn.add(navalFF.obj);
+    var boom=makeExplosion(asahi.position.clone().setY(3));
+    dyn.add(boom.obj);
+    var hij=makeTroop(HYO,2,"土方歳三","新選組副長");
+    hij.position.set(64,groundY(64,-96),-96);
+    dyn.add(hij);
+    var cb1=makeCombat(60,-106,1);
+    var cb2=makeCombat(64,-95,1.25);
+    var cb3=makeCombat(70,-113,0.9);
+    dyn.add(cb1.obj); dyn.add(cb2.obj); dyn.add(cb3.obj);
+    var mid=new THREE.Vector3();
+    var fell=false;
+    updaters.push(function(t,time){
+      a1.update(seg(t,0.06,0.5));
+      a2.update(seg(t,0.42,0.78));
+      placeOn(raid,a1.curve,seg(t,0.06,0.5));
+      var st=seg(t,0.05,1);
+      shells.forEach(function(s){
+        var u=(st*2.4+s.off)%1;
+        mid.lerpVectors(s.from,s.to,u);
+        mid.y+=Math.sin(u*Math.PI)*16;
+        s.m.position.copy(mid);
+        s.m.visible=t>0.05;
+      });
+      navalFF.update(time, t>0.16&&t<0.5);
+      boom.update(seg(t,0.5,0.62));
+      var sink=seg(t,0.53,0.9);
+      asahi.rotation.z=sink*0.7;
+      asahi.position.y=-sink*4.5;
+      cb3.update(time, t>0.14&&t<0.5);
+      cb1.update(time, t>0.44&&t<0.98);
+      cb2.update(time, t>0.55&&t<0.92);
+      if(t>0.78&&!fell){
+        fell=true;
+        hij.userData.mat.color.set("#52555a");
+        hij.userData.flag.userData.cloth.material.color.set("#52555a");
+      }
+      if(fell) hij.userData.flag.rotation.z=Math.min(1.25,hij.userData.flag.rotation.z+0.02);
+    });
+  }
+},
+{
+  date:"明治2年（1869）5月18日",
+  title:"五稜郭、開城",
+  text:"千代ヶ岡が落ち、弁天台場も降伏。孤立した五稜郭は開城を決し、榎本武揚ら約千名が武装を解いた。鳥羽伏見にはじまる戊辰戦争、約一年半の戦いはこの星形の城郭で終わりを迎える。",
+  textZ:"千代ヶ岡が落ちて、弁天台場も降伏。孤立した五稜郭はついに開城を決めて、榎本武揚たち約千名が武器を置いたのだ。鳥羽伏見から約一年半続いた戊辰戦争は、この星形のお城で終わったのだ。",
+  mood:{bg:"#8d93a3",fog:0.0026},
+  camA:{pos:[42,52,-108],look:[75,4,-70]},
+  camB:{pos:[112,38,-34],look:[75,4,-70]},
+  build:function(){
+    fortFlagBlue.visible=true; fortFlagWhite.visible=true;
+    fortFlagWhite.scale.y=0.05;
+    var lb=makeUnitLabel("榎本武揚 ら 約1,000","武装解除・降伏","#6fa3d4");
+    lb.position.set(FORT[0],groundY(FORT[0],FORT[1])+10,FORT[1]);
+    dyn.add(lb);
+    updaters.push(function(t){
+      fortFlagBlue.scale.y=Math.max(0.05,1-seg(t,0.1,0.5));
+      fortFlagBlue.visible=t<0.55;
+      fortFlagWhite.scale.y=0.05+0.95*seg(t,0.45,0.8);
+      lb.material.opacity=seg(t,0.5,0.75);
+    });
+  }
+}
+];
+
+/* ---------- タイムライン制御 ---------- */
+var cur=-1, phaseT=0, playing=true, finished=false;
+var moodFog={d:0.0028};
+var elDate=document.getElementById("ph-date"),
+    elTitle=document.getElementById("ph-title"),
+    elText=document.getElementById("ph-text"),
+    elProg=document.querySelector("#progress i"),
+    btnPlay=document.getElementById("btn-play"),
+    dotsBox=document.getElementById("dots");
+
+phases.forEach(function(p,i){
+  var d=document.createElement("button");
+  d.setAttribute("aria-label","局面"+(i+1)+"："+p.title);
+  d.addEventListener("click",function(){ goto(i); });
+  dotsBox.appendChild(d);
+});
+var dots=Array.prototype.slice.call(dotsBox.children);
+
+function goto(i){
+  cur=(i+phases.length)%phases.length;
+  phaseT=0; finished=false;
+  clearDyn();
+  fortFlagBlue.scale.y=1; fortFlagWhite.scale.y=1;
+  phases[cur].build();
+  elDate.textContent=phases[cur].date;
+  elTitle.textContent=phases[cur].title;
+  elText.textContent=zMode ? phases[cur].textZ : phases[cur].text;
+  dots.forEach(function(d,k){ d.setAttribute("aria-current", k===cur ? "true":"false"); });
+  playVoice();
+}
+
+/* ---------- ずんだもんモード／音声 ----------
+   音声ファイルの置き場所：このHTMLと同じ階層に voice/ フォルダを作り、
+   VOICEVOX（話者：ずんだもん）で書き出したWAVを
+   voice/phase1.wav 〜 voice/phase6.wav の名前で置くと再生される。
+   ファイルが無い場合は何も起きない（エラーにならない）。 */
+var zMode=false, voiceOn=false, audio=null;
+function voiceSrc(i){ return "voice/phase"+(i+1)+".wav"; }
+function stopVoice(){ if(audio){ audio.pause(); } }
+function playVoice(){
+  if(!voiceOn) return;
+  /* Audio要素は初回トグル（タップ）時に1つだけ生成して使い回す。
+     タップ起点で一度再生した要素はiOSでもアンロックされ、局面自動切替時のsrc差し替え再生が通る */
+  if(!audio) audio=new Audio();
+  audio.pause();
+  audio.src=voiceSrc(cur);
+  audio.play().catch(function(){ /* ファイル未配置・自動再生制限時は黙ってスキップ */ });
+}
+function updateCredit(){
+  document.getElementById("credit").hidden=!(zMode||voiceOn);
+}
+var btnZunda=document.getElementById("btn-zunda");
+btnZunda.addEventListener("click",function(){
+  zMode=!zMode;
+  btnZunda.textContent="ずんだもん解説："+(zMode?"ON":"OFF");
+  btnZunda.setAttribute("aria-pressed",zMode?"true":"false");
+  elText.textContent=zMode ? phases[cur].textZ : phases[cur].text;
+  updateCredit();
+});
+var btnVoice=document.getElementById("btn-voice");
+btnVoice.addEventListener("click",function(){
+  voiceOn=!voiceOn;
+  btnVoice.textContent="音声："+(voiceOn?"ON":"OFF");
+  btnVoice.setAttribute("aria-pressed",voiceOn?"true":"false");
+  updateCredit();
+  if(voiceOn) playVoice(); else stopVoice();
+});
+
+function setPlaying(v){
+  playing=v;
+  btnPlay.textContent=playing?"一時停止":"再生";
+  if(audio && voiceOn){ if(playing) audio.play().catch(function(){}); else audio.pause(); }
+}
+document.getElementById("btn-prev").addEventListener("click",function(){ goto(cur-1); });
+document.getElementById("btn-next").addEventListener("click",function(){ goto(cur+1); });
+var panel=document.getElementById("panel");
+var btnFold=document.getElementById("btn-fold");
+btnFold.addEventListener("click",function(){
+  var min=panel.classList.toggle("min");
+  btnFold.textContent=min?"ひらく":"たたむ";
+  btnFold.setAttribute("aria-expanded",min?"false":"true");
+});
+panel.addEventListener("click",function(e){
+  if(panel.classList.contains("min") && e.target!==btnFold) btnFold.click();
+});
+btnPlay.addEventListener("click",function(){
+  if(finished){ goto(0); setPlaying(true); return; }
+  setPlaying(!playing);
+});
+window.addEventListener("keydown",function(e){
+  if(e.key==="ArrowRight") goto(cur+1);
+  else if(e.key==="ArrowLeft") goto(cur-1);
+  else if(e.key===" "){ e.preventDefault(); btnPlay.click(); }
+});
+
+goto(0);
+
+/* ---------- メインループ ---------- */
+var vA=new THREE.Vector3(), vB=new THREE.Vector3(),
+    wantPos=new THREE.Vector3(), wantLook=new THREE.Vector3(),
+    bgTarget=new THREE.Color();
+var clock=new THREE.Clock();
+
+function animate(){
+  requestAnimationFrame(animate);
+  var dt=Math.min(clock.getDelta(),0.05);
+  var ph=phases[cur];
+
+  if(playing && !finished){
+    phaseT+=dt/DUR;
+    if(phaseT>=1){
+      if(cur<phases.length-1){ goto(cur+1); }
+      else { phaseT=1; finished=true; setPlaying(false); btnPlay.textContent="もう一度"; }
+      ph=phases[cur];
+    }
+  }
+  var t=Math.min(phaseT,1);
+  var te=ease(t);
+  var time=clock.elapsedTime;
+
+  vA.fromArray(ph.camA.pos); vB.fromArray(ph.camB.pos);
+  wantPos.lerpVectors(vA,vB,te);
+  vA.fromArray(ph.camA.look); vB.fromArray(ph.camB.look);
+  wantLook.lerpVectors(vA,vB,te);
+  if(!REDUCED){
+    wantPos.x+=Math.sin(time*0.21)*2.2;
+    wantPos.y+=Math.sin(time*0.16)*1.4;
+  }
+  var k=1-Math.pow(0.0015,dt);
+  camPos.lerp(wantPos,k);
+  camLook.lerp(wantLook,k);
+  camera.position.copy(camPos);
+  camera.lookAt(camLook);
+
+  bgTarget.set(ph.mood.bg);
+  scene.background.lerp(bgTarget,k*0.6);
+  scene.fog.color.copy(scene.background);
+  moodFog.d+=(ph.mood.fog-moodFog.d)*k*0.6;
+  scene.fog.density=moodFog.d;
+
+  for(var i=0;i<updaters.length;i++) updaters[i](t,time);
+  fitLabels();
+
+  elProg.style.width=(t*100).toFixed(1)+"%";
+  renderer.render(scene,camera);
+}
+animate();
+
+window.addEventListener("resize",function(){
+  camera.aspect=window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth,window.innerHeight);
+});
+
+})();
+</script>
+</body>
+</html>
